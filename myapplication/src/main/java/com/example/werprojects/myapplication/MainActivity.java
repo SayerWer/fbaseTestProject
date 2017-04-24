@@ -1,5 +1,9 @@
 package com.example.werprojects.myapplication;;
 
+import android.content.Intent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -14,6 +18,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,52 +39,65 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("message");
+    DatabaseReference myRef = database.getReference("Server/Names");
+    String value="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
-
-
         Button b = (Button) findViewById(R.id.button);
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myRef.setValue("Hello, World!");
-            }
-        });
+
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
-               System.out.println(value);
+
+
+                value = dataSnapshot.getValue(String.class);
+
             }
 
+
             @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                System.out.println("Failed");
+            public void onCancelled(DatabaseError databaseError) {
+
             }
+
+
         });
 
 
 
+        b.setOnClickListener((new View.OnClickListener() {
 
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-
-        //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        /*fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //myRef.setValue("hh");
+
+                ///////////////////Plays noise////////////////////////////
+
+                try {
+                    Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                    Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+                    r.play();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                /////////////////////////////////////////////////////////
+
+
+
+                EditText edit = (EditText)findViewById(R.id.editText2);
+                String result = edit.getText().toString();
+                myRef.setValue(value+":"+result);
+
+                startActivity(new Intent(MainActivity.this, Question.class));
+
+
             }
-        });*/
+        }));
+
     }
     @Override
     protected void onStart(){
