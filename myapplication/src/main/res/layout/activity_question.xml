@@ -11,81 +11,45 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_question"
-        android:id="@+id/include" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/B1"
-            android:layout_width="131dp"
-            android:layout_height="49dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="10dp"
-            android:text="I don't know"
-            app:layout_constraintLeft_toLeftOf="@+id/B2"
-            app:layout_constraintTop_toBottomOf="@+id/B2" />
-
-        <Button
-            android:id="@+id/B2"
-            android:layout_width="131dp"
-            android:layout_height="49dp"
-            android:layout_marginLeft="44dp"
-            android:layout_marginTop="165dp"
-            android:text="Yes"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textSwitcher" />
-
-        <Button
-            android:id="@+id/B3"
-            android:layout_width="131dp"
-            android:layout_height="49dp"
-            android:layout_marginRight="44dp"
-            android:layout_marginTop="10dp"
-            android:text="Mabye"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/NO" />
-
-        <Button
-            android:id="@+id/NO"
-            android:layout_width="131dp"
-            android:layout_height="49dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginTop="165dp"
-            android:text="NO"
-            app:layout_constraintRight_toRightOf="@+id/B3"
-            app:layout_constraintTop_toBottomOf="@+id/textSwitcher" />
-
-        <TextSwitcher
-            android:id="@+id/textSwitcher"
-            android:layout_width="322dp"
-            android:layout_height="171dp"
-            android:layout_marginLeft="18dp"
-            android:layout_marginRight="18dp"
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="111dp"
-            app:layout_constraintHorizontal_bias="0.49" />
+            android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.568" />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.design.widget.CoordinatorLayout>
